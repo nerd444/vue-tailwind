@@ -7,7 +7,7 @@
       <router-link to="/nav">nav</router-link>
       <router-link to="/home">home</router-link>
     </nav>
-    <div class="block">
+    <div class="block pt-6">
       <router-view />
     </div>
   </div>
