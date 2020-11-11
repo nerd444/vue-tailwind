@@ -6,7 +6,7 @@
         @click.prevent="active = !active"
       >
         <strong>{{ title }}</strong>
-        <span v-show="!active">&#9660;</span>
+        <span v-show="!active">down</span>
         <span v-show="active">&#9650;</span>
       </a>
     </div>
