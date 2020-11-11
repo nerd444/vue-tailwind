@@ -15,6 +15,11 @@
       </p>
     </accordion>
     <div>나는 밀릴거야!</div>
+
+    <form>
+      <input type="text" />
+      <input type="submit" @click.prevent="alert" />
+    </form>
   </div>
 </template>
 
@@ -23,6 +28,11 @@ import Accordion from "@/components/Accordion";
 export default {
   components: {
     Accordion
+  },
+  methods: {
+    alert() {
+      alert("새로고침 ㄴ");
+    }
   }
 };
 </script>
