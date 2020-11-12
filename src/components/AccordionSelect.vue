@@ -17,7 +17,7 @@
         class="px-4 py-2 block"
         @click="selected(item)"
       >
-        {{ item.show }}
+        {{ item.text }}
       </a>
     </div>
   </div>
