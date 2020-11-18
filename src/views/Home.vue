@@ -1,19 +1,5 @@
 <template>
-  <div>
-    <div class="w-screen">
-      <div class="flex">
-        <div class="w-1/3 p-4">기간</div>
-        <div class="w-2/3 px-4 py-2">
-          <accordion-select-period
-            :period="period"
-            text="주 완성 프로젝트"
-            :items="[3, 4, 5, 6, 0]"
-            @clicked="handlePeriod"
-          >
-          </accordion-select-period>
-        </div>
-      </div>
-    </div>
+  <div class="h-full flex flex-row">
     <div class="w-screen">
       <div class="flex">
         <div class="w-1/3 p-4">종류</div>
@@ -33,21 +19,37 @@
         </div>
       </div>
     </div>
+    <accordion-bottom class="fixed bottom-0 bg-blue-500 w-full" :menus="menu">
+    </accordion-bottom>
   </div>
 </template>
 
 <script>
 import AccordionSelect from "@/components/AccordionSelect";
-import AccordionSelectPeriod from "@/components/AccordionSelectPeriod";
+import AccordionBottom from "@/components/AccordionBottom";
 export default {
   components: {
     AccordionSelect,
-    AccordionSelectPeriod
+    AccordionBottom
   },
   data() {
     return {
       period: 0,
-      trainingType: ""
+      trainingType: "",
+      menu: [
+        {
+          title: "To Do List",
+          icon: "fa-suitcase"
+        },
+        {
+          title: "게시판",
+          icon: "fa-user-friends"
+        },
+        {
+          title: "온라인 상담",
+          icon: "fa-comment"
+        }
+      ]
     };
   },
   methods: {
