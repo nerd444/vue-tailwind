@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <accordion-bottom class="fixed bottom-0 bg-blue-500 w-full" :menus="menu">
+    <accordion-bottom class="fixed bottom-0 w-full" :menus="menu">
     </accordion-bottom>
   </div>
 </template>
