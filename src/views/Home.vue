@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-row">
     <div class="w-screen">
-      <div class="flex">
+      <div class="flex flex-col">
         <div class="w-1/3 p-4">종류</div>
         <div class="w-2/3 px-4 py-2">
           <accordion-select
@@ -17,6 +17,19 @@
           >
           </accordion-select>
         </div>
+        <!-- 직접 입력 선택으로 (배열에 ''부분만 지우면 됨...!) -->
+        <div class="w-1/3 p-4 mt-10">연령대</div>
+        <div class="w-2/3 px-4 py-2">
+          <accordion-period
+            class="bg-gray-200"
+            :type="periodType"
+            text=" 연령대"
+            :isInput="true"
+            :items="['20 ~ 30대', '30 ~ 40대', '40 ~ 50대']"
+            @clicked="handlePeriodType"
+          >
+          </accordion-period>
+        </div>
       </div>
       <template><span>test</span></template>
     </div>
@@ -27,16 +40,19 @@
 
 <script>
 import AccordionSelect from "@/components/AccordionSelect";
+import AccordionPeriod from "@/components/AccordionPeriod";
 import AccordionBottom from "@/components/AccordionBottom";
 export default {
   components: {
     AccordionSelect,
-    AccordionBottom
+    AccordionBottom,
+    AccordionPeriod
   },
   data() {
     return {
       period: 0,
       trainingType: "",
+      periodType: "",
       menu: [
         {
           title: "To Do List",
@@ -72,6 +88,9 @@ export default {
     },
     handleTrainingType(item) {
       this.trainingType = item;
+    },
+    handlePeriodType(item) {
+      this.periodType = item;
     }
   }
 };
