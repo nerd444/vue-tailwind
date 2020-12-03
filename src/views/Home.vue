@@ -32,6 +32,44 @@
         </div>
       </div>
       <template><span>test</span></template>
+
+      <div class="my-20 w-full px-10">
+        <accordion-test
+          @clicked="handleType"
+          :selectItem="type"
+          :items="[
+            '복부 집중 트레이닝',
+            '상체 집중 트레이닝',
+            '하체 집중 트레이닝'
+          ]"
+        />
+      </div>
+
+      <div class="ml-20">
+        <select
+          name=""
+          id=""
+          class="appearance-none focus:outline-none border rounded-lg  py-2 px-8"
+        >
+          <option value="">복부 집중 트레이닝</option>
+          <option value="">상체 집중 트레이닝</option>
+          <option value="">하체 집중 트레이닝</option>
+        </select>
+      </div>
+
+      <div>
+        <datepicker
+          :value="date"
+          :language="ko"
+          :format="dateFormatter"
+          :calendar-button-icon="icon"
+          @click="dateEnd"
+        ></datepicker>
+        <span>
+          ~
+          <span>{{ endDate }}</span>
+        </span>
+      </div>
     </div>
     <accordion-bottom class="fixed bottom-0 w-full" :menus="menu">
     </accordion-bottom>
@@ -42,17 +80,24 @@
 import AccordionSelect from "@/components/AccordionSelect";
 import AccordionPeriod from "@/components/AccordionPeriod";
 import AccordionBottom from "@/components/AccordionBottom";
+import AccordionTest from "@/components/AccordionTest";
+import Datepicker from "vuejs-datepicker";
+import { en, ko } from "vuejs-datepicker/dist/locale";
+import moment from "moment";
 export default {
   components: {
     AccordionSelect,
     AccordionBottom,
-    AccordionPeriod
+    AccordionPeriod,
+    AccordionTest,
+    Datepicker
   },
   data() {
     return {
       period: 0,
       trainingType: "",
       periodType: "",
+      type: "",
       menu: [
         {
           title: "To Do List",
@@ -66,7 +111,12 @@ export default {
           title: "온라인 상담",
           icon: "fa-comment"
         }
-      ]
+      ],
+      date: new Date(),
+      ko: ko,
+      en: en,
+      endDate: new Date(),
+      icon: "fas fa-chevron-left"
     };
   },
   methods: {
@@ -91,6 +141,17 @@ export default {
     },
     handlePeriodType(item) {
       this.periodType = item;
+    },
+    handleType(item) {
+      this.type = item;
+    },
+    dateFormatter(date) {
+      return (this.date = moment(date).format("yyyy-MM-DD"));
+    },
+    dateEnd() {
+      this.endDate = moment(this.date)
+        .add(6, "M")
+        .format("yyyy-MM-DD");
     }
   }
 };
