@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@voerro/vue-tagsinput": "^2.4.3",
     "core-js": "^3.6.5",
     "moment": "^2.29.1",
     "tailwindcss": "^1.9.6",

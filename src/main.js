@@ -7,6 +7,9 @@ import moment from "moment";
 // styles (fontawesome)
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+import VoerroTagsInput from "@voerro/vue-tagsinput";
+
+Vue.component("tags-input", VoerroTagsInput);
 Vue.config.productionTip = false;
 
 Vue.use(moment);
