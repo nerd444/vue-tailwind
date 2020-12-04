@@ -65,20 +65,19 @@
           :calendar-button-icon="icon"
           @click="dateEnd"
         ></datepicker>
-        <span>
-          ~
-          <span>{{ endDate }}</span>
-        </span>
       </div>
 
-      <tags-input element-id="tags" v-model="selectedTags" :typeahead="true">
-        <template v-slot:selected-tag="{ tag, removeTag }">
-          <span v-html="tag.value" class="bg-indigo-300"></span>
+      <tags-input element-id="tags" v-model="selectedTags" class="mx-20">
+        <template v-slot:selected-tag="{ tag, index, removeTag }">
+          <span
+            v-html="tag.value"
+            class="border-transparent rounded-full px-3"
+          ></span>
 
           <a
             v-show="!disabled"
             href="#"
-            class="tags-input-remove bg-indigo-400 text-black"
+            class="tags-input-remove bg-gray-600"
             @click.prevent="removeTag(index)"
           ></a>
         </template>
@@ -176,31 +175,32 @@ export default {
 .tags-input {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: right;
 }
 
 .tags-input input {
   flex: 1;
-  background: transparent;
-  border: none;
+  background-color: #c5d9ff;
+  border: #8bbafe;
 }
 
 .tags-input input:focus {
   outline: none;
 }
 
+/* 글씨색? */
 .tags-input input[type="text"] {
-  color: #495057;
+  color: #000;
 }
 
 .tags-input-wrapper-default {
   padding: 0.5em 0.25em;
 
-  background: #fff;
+  background: #000;
 
-  border: 1px solid transparent;
-  border-radius: 0.25em;
-  border-color: #dbdbdb;
+  border: 1px solid #000;
+  border-radius: 9999px;
+  border-color: #000;
 }
 
 .tags-input-wrapper-default.active {
@@ -214,29 +214,31 @@ export default {
   margin-right: 0.3em;
 }
 
+/* X버튼 */
 .tags-input-remove {
+  border: transparent;
+  border-radius: 9999px;
   cursor: pointer;
   position: absolute;
   display: inline-block;
-  right: 0.3em;
-  top: 0.3em;
-  padding: 0.5em;
-  overflow: hidden;
+  padding: 0.6em;
+  /* overflow: hidden; */
 }
 
 .tags-input-remove:focus {
   outline: none;
 }
 
+/* 바뀜 (지우는 버튼) */
 .tags-input-remove:before,
 .tags-input-remove:after {
   content: "";
   position: absolute;
   width: 75%;
-  left: 0.15em;
-  background: #5dc282;
-
   height: 2px;
+  left: 0.15em;
+  background: #d2d2d1;
+
   margin-top: -1px;
 }
 
@@ -258,9 +260,10 @@ export default {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 0.25em;
+  border-radius: 9999px;
   overflow: hidden;
   text-overflow: ellipsis;
+  background-color: thistle;
 }
 
 .tags-input-badge-pill {
