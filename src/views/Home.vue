@@ -67,17 +67,21 @@
         ></datepicker>
       </div>
 
-      <tags-input element-id="tags" v-model="selectedTags" class="mx-20">
+      <tags-input
+        element-id="tags"
+        v-model="selectedTags"
+        class="mx-20 border rounded-md p-1"
+      >
         <template v-slot:selected-tag="{ tag, index, removeTag }">
           <span
             v-html="tag.value"
-            class="border-transparent rounded-full px-3"
+            class="border-transparent rounded-full px-3 mx-1"
           ></span>
 
           <a
             v-show="!disabled"
             href="#"
-            class="tags-input-remove bg-gray-600"
+            class="tags-input-remove"
             @click.prevent="removeTag(index)"
           ></a>
         </template>
@@ -176,52 +180,61 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: right;
+  background-color: #8bbafe;
 }
 
-.tags-input input {
-  flex: 1;
-  background-color: #c5d9ff;
-  border: #8bbafe;
-}
-
-.tags-input input:focus {
-  outline: none;
-}
-
-/* 글씨색? */
 .tags-input input[type="text"] {
-  color: #000;
+  color: #0080ff;
 }
 
 .tags-input-wrapper-default {
   padding: 0.5em 0.25em;
 
-  background: #000;
+  background: rgb(255, 0, 0);
 
-  border: 1px solid #000;
-  border-radius: 9999px;
-  border-color: #000;
+  border: 1px solid transparent;
+  border-radius: 0.25em;
+  border-color: #dbdbdb;
 }
 
 .tags-input-wrapper-default.active {
   border: 1px solid #8bbafe;
   box-shadow: 0 0 0 0.2em rgba(13, 110, 253, 0.25);
   outline: 0 none;
+  color: #0080ff;
+  background: #0059ff;
 }
 
-/* The tag badges & the remove icon */
+.tags-input input {
+  background-color: #0059ff;
+  border: #8bbafe;
+  background: #0080ff;
+  width: 80%;
+}
+
+/* The tag badges & the remove icon 태그 스타일!! */
 .tags-input span {
-  margin-right: 0.3em;
+  position: relative;
+  background-color: #e8eaef;
+  padding-bottom: 0.3em;
+  padding-top: 0.3em;
+  padding-right: 2.3em;
+  font-size: 0.83rem;
+  line-height: 1.2rem;
 }
 
-/* X버튼 */
+/* 바뀜 (지우는 버튼) */
 .tags-input-remove {
   border: transparent;
   border-radius: 9999px;
   cursor: pointer;
   position: absolute;
   display: inline-block;
-  padding: 0.6em;
+  padding: 0.5em;
+  background: #707070;
+  margin-right: 0.5em;
+  margin-left: -1.7em;
+  margin-top: 0.3em;
   /* overflow: hidden; */
 }
 
@@ -229,17 +242,18 @@ export default {
   outline: none;
 }
 
-/* 바뀜 (지우는 버튼) */
+/* X버튼 */
 .tags-input-remove:before,
 .tags-input-remove:after {
   content: "";
   position: absolute;
-  width: 75%;
-  height: 2px;
+  width: 70%;
+  height: 1.5px;
   left: 0.15em;
-  background: #d2d2d1;
+  background: #e8eaef;
 
   margin-top: -1px;
+  margin-right: -1px;
 }
 
 .tags-input-remove:before {
@@ -263,16 +277,18 @@ export default {
   border-radius: 9999px;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: thistle;
+  background-color: #0080ff;
 }
 
 .tags-input-badge-pill {
   padding-right: 1.25em;
   padding-left: 0.6em;
   border-radius: 10em;
+  background-color: #0080ff;
 }
 .tags-input-badge-pill.disabled {
   padding-right: 0.6em;
+  background-color: #0080ff;
 }
 
 .tags-input-badge-selected-default {
@@ -290,6 +306,7 @@ export default {
 .typeahead-badges > span {
   cursor: pointer;
   margin-right: 0.3em;
+  background-color: #0080ff;
 }
 
 /* Typeahead - dropdown */
@@ -310,7 +327,7 @@ export default {
 /* Typeahead elements style/theme */
 .tags-input-typeahead-item-default {
   color: #fff;
-  background-color: #343a40;
+  background-color: #0080ff;
 }
 
 .tags-input-typeahead-item-highlighted-default {
