@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Slider from "../views/Slider.vue";
+import Chart from "../views/Chart.vue";
 import Nav from "../views/Nav.vue";
 import Header from "../views/Header.vue";
 
@@ -11,6 +13,16 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/slider",
+    name: "Slider",
+    component: Slider
+  },
+  {
+    path: "/chart",
+    name: "Chart",
+    component: Chart
   },
   {
     path: "/nav",

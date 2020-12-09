@@ -1,13 +1,15 @@
 <template>
   <div id="app" class="flex h-screen w-full flex-row">
-    <nav class="block fixed z-10 b-0 bg-blue-500 inset-x-0">
+    <nav class="block fixed z-10 top-0 border-b inset-x-0 uppercase px-10 py-3">
       <div class="hidden">
         <router-link to="/header" class="bg-gray-400">header</router-link>
       </div>
-      <router-link to="/nav">nav</router-link>
-      <router-link to="/home">home</router-link>
+      <router-link to="/nav" class="text-lg">nav</router-link>
+      <router-link to="/" class="text-lg mx-10">home</router-link>
+      <router-link to="/slider" class="text-lg mr-10">slider</router-link>
+      <router-link to="/chart" class="text-lg">chart</router-link>
     </nav>
-    <div class="block pt-6">
+    <div class="block pt-16">
       <router-view />
     </div>
   </div>
