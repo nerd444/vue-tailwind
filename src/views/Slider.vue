@@ -1,17 +1,23 @@
 <template>
   <div class="w-screen flex flex-wrap flex-col relative">
     <!-- <h1 class="h-full text-center my-4 text-3xl">Slider</h1> -->
-    <div v-for="(image, index) in sliders" :key="image">
+    <div v-for="(image, index) in sliders[0]" :key="image">
       <div class="absolute w-full" style="height: 300px;">
         <transition name="fade">
-          <!-- <img
+          <img
             v-if="currentSlide === index"
             :src="image"
             alt=""
             style="height: 600px; width: 100%;"
-          /> -->
+          />
+        </transition>
+      </div>
+    </div>
+    <div v-for="(image, index) in sliders[1]" :key="image">
+      <div class="absolute w-full" style="height: 300px;">
+        <transition name="fade">
           <video
-            v-if="currentSlide === index"
+            v-if="currentSlide === index[1]"
             autoplay="true"
             muted="true"
             height="300px"
@@ -54,13 +60,17 @@ export default {
     return {
       currentSlide: 0,
       sliders: [
-        // require("@/assets/image1.jpg"),
-        // require("@/assets/image2.jpg"),
-        // require("@/assets/image3.jpg"),
-        // require("@/assets/image4.jpg")
-        require("@/assets/video1.mp4"),
-        require("@/assets/video2.mp4"),
-        require("@/assets/video3.mp4")
+        [
+          require("@/assets/image1.jpg"),
+          require("@/assets/image2.jpg"),
+          require("@/assets/image3.jpg"),
+          require("@/assets/image4.jpg")
+        ],
+        [
+          require("@/assets/video1.mp4"),
+          require("@/assets/video2.mp4"),
+          require("@/assets/video3.mp4")
+        ]
       ],
       interval: "",
       isTitleShowing: true
