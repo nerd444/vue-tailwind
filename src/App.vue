@@ -7,7 +7,9 @@
       <router-link to="/nav" class="text-lg">nav</router-link>
       <router-link to="/" class="text-lg mx-10">home</router-link>
       <router-link to="/slider" class="text-lg mr-10">slider</router-link>
-      <router-link to="/chart" class="text-lg">chart</router-link>
+      <router-link to="/chart" class="text-lg mr-10">chart</router-link>
+      <router-link to="/crud" class="text-lg mr-10">crud</router-link>
+      <router-link to="/detail" class="text-lg">detail</router-link>
     </nav>
     <div class="block pt-16">
       <router-view />
