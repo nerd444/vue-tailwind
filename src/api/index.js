@@ -22,3 +22,10 @@ export function getProjectDetail() {
     config
   );
 }
+
+export function getReviewList() {
+  return axios.get(
+    baseUrl + `/comment/5fc39d9a3125d1a2766a2b94?count=1`,
+    config
+  );
+}

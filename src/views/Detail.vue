@@ -60,19 +60,82 @@
           <p>{{ data.description }}</p>
         </accordion-2>
       </div>
+      <!-- 트레이너소개 -->
+      <div v-show="menu === 2">
+        <h1 class="font-bold my-2">트레이너 소개</h1>
+        <img :src="profileImages" alt="" class="mx-10 w-48 h-64" />
+        <h2>{{ trainerName }}</h2>
+        <p class="text-blue-500 text-xs">
+          프리미엄 트레이닝 제공 트레이너 입니다.
+        </p>
+
+        <h2>자격 사항</h2>
+        <!-- v-for="(cert, i) in certificates" :key="i" -->
+        <ul class="text-sm">
+          <li>비었</li>
+          <li>비었</li>
+        </ul>
+
+        <h2>경력 사항</h2>
+        <ul class="text-sm">
+          <li v-for="(data, i) in careers" :key="i">{{ data[0] }}</li>
+        </ul>
+      </div>
+      <!-- 후기 -->
+      <div v-show="menu === 3">
+        <h1 class="font-bold my-2">후기</h1>
+        <ul>
+          <li v-for="(review, i) in reviews" :key="i" class="p-3 border-b">
+            <span class="flex flex-row">
+              <img
+                :src="review.author.avatar"
+                alt=""
+                class="w-10 h-10 border-transparent rounded-full mr-4"
+              />
+              <span class="flex flex-col">
+                <h2>{{ review.author.username }}</h2>
+                <h3>{{ review.createdAt }}</h3>
+              </span>
+            </span>
+            <p class="py-4">{{ review.comment }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="w-full my-10" />
+
+    <!-- 프리미엄 이용안내 -->
+    <div>
+      <h1 class="font-bold my-2">프리미엄 이용 !!</h1>
+      <p>트레이너님과 직접 연락을 주고 받으며 밀착 관리를 받는 시스템입니다.</p>
+      <accordion-2
+        class="mt-2 mb-6"
+        font="font-bold text-gray-600 flex justify-between items-center"
+        div-class="p-3"
+        :shadow="true"
+      >
+        <template v-slot:title>
+          <span>홍길동 트레이너 프리미엄 리뷰 보기</span>
+        </template>
+        리뷰들
+      </accordion-2>
+      <h2>요금 정책</h2>
     </div>
   </div>
 </template>
 
 <script>
-import { getProjectDetail } from "@/api/index";
+import { getProjectDetail, getReviewList } from "@/api/index";
 import Accordion2 from "@/components/Accordion2";
+import moment from "moment";
 export default {
   components: {
     Accordion2
   },
   data() {
     return {
+      moment: moment,
       menus: [
         {
           id: 0,
@@ -97,7 +160,6 @@ export default {
       ],
       menu: 0,
       projectInfo: "",
-      trainerInfo: "",
       thumbnail: "",
       className: "",
       trainerName: "",
@@ -108,11 +170,28 @@ export default {
       ages: "",
       goal: "",
 
-      weekCuriculums: ""
+      weekCuriculums: "",
+
+      trainerInfo: "",
+      profileImages: "",
+      certificates: [],
+      careers: [],
+
+      reviews: [],
+      avatar: "",
+      authorName: "",
+      createdAt: "",
+      comment: "",
+
+      addressDetail: "",
+      address: "",
+      cost: 0,
+      consultingFee: 0
     };
   },
   mounted() {
     this.getProject();
+    this.getCommentList();
   },
   methods: {
     getMenu(number) {
@@ -130,8 +209,9 @@ export default {
       getProjectDetail()
         .then(res => {
           if (res.status == 200) {
+            this.projectId = res.data.data.project._id;
+
             this.projectInfo = res.data.data.project;
-            this.trainerInfo = res.data.data.trainer;
             this.thumbnail = this.projectInfo.thumbnail;
             this.className = this.projectInfo.className;
             this.trainerName = this.projectInfo.creator.username;
@@ -143,7 +223,26 @@ export default {
             this.goal = this.projectInfo.goal;
 
             this.weekCuriculums = this.projectInfo.weekCuriculums;
+
+            this.trainerInfo = res.data.data.trainer;
+            this.profileImages = this.trainerInfo.profileImages[0];
+            this.certificates = this.trainerInfo.certificates;
+            this.careers = this.trainerInfo.careers;
+
+            this.addressDetail = this.projectInfo.addressDetail;
+            this.address = this.projectInfo.address;
+            this.cost = this.projectInfo.cost;
+            this.consultingFee = this.projectInfo.consultingFee;
           }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getCommentList() {
+      getReviewList()
+        .then(res => {
+          this.reviews = res.data.data;
         })
         .catch(err => {
           console.log(err);
