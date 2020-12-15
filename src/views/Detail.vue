@@ -94,7 +94,9 @@
               />
               <span class="flex flex-col">
                 <h2>{{ review.author.username }}</h2>
-                <h3>{{ review.createdAt }}</h3>
+                <h3>
+                  {{ moment(review.createdAt).format("YYYY.MM.DD HH:mm") }}
+                </h3>
               </span>
             </span>
             <p class="py-4">{{ review.comment }}</p>
@@ -120,7 +122,31 @@
         </template>
         리뷰들
       </accordion-2>
-      <h2>요금 정책</h2>
+      <h2>프리미엄 PT 장소</h2>
+      <div class="border rounded-lg w-48">
+        {{ addressDetail + " " + address }}
+      </div>
+      <h2>이용요금</h2>
+      <div>
+        <div class="flex justify-between">
+          <h3>프로젝트 참가비</h3>
+          <div class="border rounded-lg text-center px-10 relative">
+            {{ cost.toLocaleString() }}
+            <span class="absolute right-0 mr-2">￦</span>
+          </div>
+        </div>
+        <div class="flex justify-between">
+          <h3>1:1 온라인 상담</h3>
+          <div class="border rounded-lg text-center px-10 relative">
+            {{ consultingFee.toLocaleString() }}
+            <span class="absolute right-0 mr-2">￦</span>
+          </div>
+        </div>
+        <div class="flex justify-between text-lg font-bold">
+          <h3>총 수강료</h3>
+          <div>{{ totalcost.toLocaleString() }} ￦</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -186,7 +212,8 @@ export default {
       addressDetail: "",
       address: "",
       cost: 0,
-      consultingFee: 0
+      consultingFee: 0,
+      totalcost: 0
     };
   },
   mounted() {
@@ -229,10 +256,12 @@ export default {
             this.certificates = this.trainerInfo.certificates;
             this.careers = this.trainerInfo.careers;
 
-            this.addressDetail = this.projectInfo.addressDetail;
-            this.address = this.projectInfo.address;
+            this.addressDetail = this.projectInfo.creator.addressDetail;
+            this.address = this.projectInfo.creator.address;
             this.cost = this.projectInfo.cost;
             this.consultingFee = this.projectInfo.consultingFee;
+
+            this.totalcost = this.cost + this.consultingFee;
           }
         })
         .catch(err => {
