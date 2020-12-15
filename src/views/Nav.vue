@@ -4,6 +4,7 @@
       <ul
         class="flex justify-center px-20 pb-6 border-b-2 border-gray-100 md:justify-between"
       >
+        <!-- 여기 -->
         <li class="flex flex-col items-center mr-4 md:mr-0">
           <span
             class="flex items-center justify-center w-10 h-10 font-semibold text-white rounded-full bg-blue-500 md:w-8 md:h-8"
@@ -14,6 +15,7 @@
             등록방법
           </p>
         </li>
+        <!-- 여기 -->
         <li class="inline-block mr-4 text-center md:mr-0">
           <span
             class="px-3 py-2 font-semibold text-white rounded-full bg-gray-500 md:mr-2 md:px-2 md:py-1"
@@ -78,6 +80,7 @@
                 프로젝트 정보 및 트레이너 정보가 담긴 내용을 작성 후 제출합니다.
               </p>
             </li>
+            <!-- 저기 -->
             <li class="w-1/5 text-center">
               <div
                 class="mb-2 border border-blue-500 rounded-full flex justify-center items-center w-32 h-32"
@@ -92,6 +95,7 @@
                 취합니다.
               </p>
             </li>
+            <!-- 저기 -->
             <li class="w-1/5 text-center">
               <div class="mb-2">
                 <img src="@/assets/premium-sample.svg" class="w-20 h-20" />
