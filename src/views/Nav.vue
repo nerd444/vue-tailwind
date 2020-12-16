@@ -1,128 +1,71 @@
 <template>
   <div>
-    <div class="pt-8 pb-4">
-      <ul
-        class="flex justify-center px-20 pb-6 border-b-2 border-gray-100 md:justify-between"
-      >
-        <!-- 여기 -->
-        <li class="flex flex-col items-center mr-4 md:mr-0">
-          <span
-            class="flex items-center justify-center w-10 h-10 font-semibold text-white rounded-full bg-blue-500 md:w-8 md:h-8"
-          >
-            0
-          </span>
-          <p class="hidden font-bold text-blue-500 md:block md:mt-3">
-            등록방법
-          </p>
-        </li>
-        <!-- 여기 -->
-        <li class="inline-block mr-4 text-center md:mr-0">
-          <span
-            class="px-3 py-2 font-semibold text-white rounded-full bg-gray-500 md:mr-2 md:px-2 md:py-1"
-            >1</span
-          >
-          <p class="hidden text-gray-500 md:block md:mt-3">
-            제목 및 썸네일
-          </p>
-        </li>
-        <li class="inline-block mr-4 text-center md:mr-0">
-          <span
-            class="px-3 py-2 font-semibold text-white rounded-full bg-gray-500 md:mr-2 md:px-2 md:py-1"
-            >2</span
-          >
-          <p class="hidden text-gray-500 md:block md:mt-3">커리큘럼 등록</p>
-        </li>
-        <li class="inline-block mr-4 text-center md:mr-0">
-          <span
-            class="px-3 py-2 font-semibold text-white rounded-full bg-gray-500 md:mr-2 md:px-2 md:py-1"
-            >3</span
-          >
-          <p class="hidden text-gray-500 md:block md:mt-3">트레이너 소개</p>
-        </li>
-        <li class="inline-block mr-4 text-center md:mr-0">
-          <span
-            class="px-3 py-2 font-semibold text-white rounded-full bg-gray-500 md:mr-2 md:px-2 md:py-1"
-            >4</span
-          >
-          <p class="hidden text-gray-500 md:block md:mt-3">
-            제출 전 확인사항
-          </p>
-        </li>
-        <li class="inline-block text-center">
-          <span
-            class="px-3 py-2 font-semibold text-white rounded-full bg-gray-500 md:mr-2 md:px-2 md:py-1"
-            >5</span
-          >
-          <p class="hidden text-gray-500 md:block md:mt-3">제출완료</p>
-        </li>
-      </ul>
-    </div>
+    <ul>
+      <li v-for="(data, i) in weekCuriculums" :key="i">
+        <accordion
+          font="font-bold text-xl text-primary-200"
+          div-class="w-full p-3 border-transparent rounded-md shadow"
+        >
+          <template v-slot:title>
+            <div>{{ `${i + 1}주차` }}</div>
+          </template>
 
-    <hr class="my-10 w-fuil" />
-
-    <!--contents 4.Pre-submission Confirmation 제출 전 확인사항-->
-    <div class="p-10">
-      <div class="md:grid">
-        <!--등록 기간 안내-->
-        <div>
-          <h2 class="pb-5 text-2xl font-bold text-gray-700">
-            등록 기간 안내<span class="ml-2 font-bold text-orange-400">*</span>
-          </h2>
-          <ul class="flex justify-between mt-10">
-            <li class="w-1/5 mr-10 text-center">
-              <div class="mb-2">
-                <img src="@/assets/premium-sample.svg" class="w-20 h-20" />
+          <div class="md:grid-cols-10 md:grid md:grid-row-11">
+            <div
+              class="md:col-span-6 md:col-start-1 md:row-start-1 md:row-span-2"
+            >
+              <!--1주차 안에 트레이닝 설명과 바로 밑에 들어가는 상세설명 파트-->
+              <div class="md:row-span-2 md:row-start-2">
+                <h2
+                  class="pb-5 text-xl font-bold md:text-2xl text-secondly-400"
+                >
+                  주차별 트레이닝 설명<span
+                    class="ml-2 font-bold text-basicOrange"
+                    >*</span
+                  >
+                </h2>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  placeholder="내용을 입력해주세요"
+                  maxlength="300"
+                  required
+                  class="w-full h-32 p-4 border-2 rounded-lg border-secondly-100"
+                  style="resize:none;"
+                ></textarea>
+                <p
+                  class="mt-2 text-sm text-right md:text-base text-secondly-100"
+                >
+                  글자수 제한 300자
+                </p>
               </div>
-              <p class="mb-10 text-2xl font-bold text-gray-700">
-                프로젝트 등록 제출
-              </p>
-              <p class="text-lg text-gray-700">
-                프로젝트 정보 및 트레이너 정보가 담긴 내용을 작성 후 제출합니다.
-              </p>
-            </li>
-            <!-- 저기 -->
-            <li class="w-1/5 text-center">
-              <div
-                class="mb-2 border border-blue-500 rounded-full flex justify-center items-center w-32 h-32"
+            </div>
+            <div
+              class="px-10 mt-3 rounded-lg md:mt-20 bg-secondly-100 py-7 md:col-span-3 md:col-start-8 md:row-span-2 md:row-start-1"
+            >
+              <h3
+                class="pb-5 text-lg font-semibold md:text-xl text-secondly-500"
               >
-                <img src="@/assets/premium-sample.svg" class="w-20 h-20" />
-              </div>
-              <p class="mb-10 text-2xl font-bold text-gray-700">
-                본사 프로젝트 검수
-              </p>
-              <p class="text-lg text-gray-700">
-                본사에서 트레이너님의 강의정보를 받아 검수 후 연락 조치를
-                취합니다.
-              </p>
-            </li>
-            <!-- 저기 -->
-            <li class="w-1/5 text-center">
-              <div class="mb-2">
-                <img src="@/assets/premium-sample.svg" class="w-20 h-20" />
-              </div>
-              <p class="mb-10 text-2xl font-bold text-gray-700">
-                본사 1대1 미팅<br />및 운동영상 제작
-              </p>
-              <p class="text-lg text-gray-700">
-                본사와 트레이너가 미팅을 진행해 트레이닝을 구체화, 촬영 편집을
-                통해 강의 영상을 제작합니다.
-              </p>
-            </li>
-            <li class="w-1/5 text-center">
-              <div class="mb-2">
-                <img src="@/assets/premium-sample.svg" class="w-20 h-20" />
-              </div>
-              <p class="mb-10 text-2xl font-bold text-gray-700">
-                프로젝트 등록완료
-              </p>
-              <p class="text-lg text-gray-700">
-                플랫폼에 강의 정보가 올라와 회원들에게 노출됩니다. 본격적으로
-                강의가 시작됩니다.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+                트레이닝 커리큘럼 - 주차
+              </h3>
+              <ul class="pl-3 text-sm list-disc list-outside text-secondly-500">
+                <li class="pb-3 text-primary-200">
+                  커리큘럼 작성을 모두 마쳐야 제출이 가능하며, 추후 수정은
+                  불가하오니 신중하게 작성 부탁드립니다.
+                </li>
+                <li class="pb-3">
+                  주차별 트레이닝의 큰 틀을 잡아주세요. 첫 주차에 주로 할
+                  내용이나 첫 주의 목표를 작성해주세요.
+                </li>
+                <li>
+                  (ex. 복부 지방 빼기 첫단계 습관부터 고치자! 간단한 생활속 운동
+                  팁! 회원님에게 딱 맞는 간단한 운동을 알려드립니다.)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </accordion>
+      </li>
+    </ul>
   </div>
 </template>

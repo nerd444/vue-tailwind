@@ -11,8 +11,8 @@
       <router-link to="/crud" class="text-lg mr-10">crud</router-link>
       <router-link to="/detail" class="text-lg">detail</router-link>
     </nav>
-    <div class="block pt-16">
-      <router-view />
+    <div class="flex justify-center">
+      <router-view class="min-w-400 max-w-1190" />
     </div>
   </div>
 </template>
