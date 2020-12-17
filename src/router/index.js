@@ -5,6 +5,7 @@ import Slider from "../views/Slider.vue";
 import Chart from "../views/Chart.vue";
 import Crud from "../views/CRUD.vue";
 import Detail from "../views/Detail.vue";
+import Black from "../views/Black.vue";
 import Nav from "../views/Nav.vue";
 import Header from "../views/Header.vue";
 
@@ -35,6 +36,11 @@ const routes = [
     path: "/detail",
     name: "Detail",
     component: Detail
+  },
+  {
+    path: "/black",
+    name: "Black",
+    component: Black
   },
   {
     path: "/nav",

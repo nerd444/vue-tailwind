@@ -9,7 +9,8 @@
       <router-link to="/slider" class="text-lg mr-10">slider</router-link>
       <router-link to="/chart" class="text-lg mr-10">chart</router-link>
       <router-link to="/crud" class="text-lg mr-10">crud</router-link>
-      <router-link to="/detail" class="text-lg">detail</router-link>
+      <router-link to="/detail" class="text-lg mr-10">detail</router-link>
+      <router-link to="/black" class="text-lg">black</router-link>
     </nav>
     <div class="flex justify-center">
       <router-view class="min-w-400 max-w-1190" />
