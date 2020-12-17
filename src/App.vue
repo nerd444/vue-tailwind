@@ -12,7 +12,7 @@
       <router-link to="/detail" class="text-lg mr-10">detail</router-link>
       <router-link to="/black" class="text-lg">black</router-link>
     </nav>
-    <div class="flex justify-center">
+    <div class="flex justify-center mt-16">
       <router-view class="min-w-400 max-w-1190" />
     </div>
   </div>
