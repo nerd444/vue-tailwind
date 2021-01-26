@@ -14,7 +14,8 @@ export default {
             label: "Today",
             backgroundColor: ["#E8EAEF", "#FF9B70", "#4781EC"],
             //Data to be represented on y-axis
-            data: [30, 10, 60]
+            data: [30, 10, 60],
+            borderWidth: 1
           }
         ]
       },
@@ -25,7 +26,13 @@ export default {
           position: "right"
         },
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        cutoutPercentage: 80,
+        elements: {
+          center: {
+            text: "50%" //set as you wish
+          }
+        }
       }
     };
   },
