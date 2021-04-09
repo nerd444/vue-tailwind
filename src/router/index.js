@@ -8,6 +8,7 @@ import Detail from "../views/Detail.vue";
 import Black from "../views/Black.vue";
 import Nav from "../views/Nav.vue";
 import Header from "../views/Header.vue";
+import VideoUpload from "../views/VideoUpload.vue";
 
 Vue.use(VueRouter);
 
@@ -15,49 +16,54 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/slider",
     name: "Slider",
-    component: Slider
+    component: Slider,
   },
   {
     path: "/chart",
     name: "Chart",
-    component: Chart
+    component: Chart,
   },
   {
     path: "/crud",
     name: "Crud",
-    component: Crud
+    component: Crud,
   },
   {
     path: "/detail",
     name: "Detail",
-    component: Detail
+    component: Detail,
   },
   {
     path: "/black",
     name: "Black",
-    component: Black
+    component: Black,
   },
   {
     path: "/nav",
     name: "Nav",
-    component: Nav
+    component: Nav,
   },
   {
     path: "/header",
     name: "Header",
-    component: Header
-  }
+    component: Header,
+  },
+  {
+    path: "/videoUpload",
+    name: "VideoUpload",
+    component: VideoUpload,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
