@@ -11,7 +11,10 @@
       <router-link to="/crud" class="mr-10 text-lg">crud</router-link>
       <router-link to="/detail" class="mr-10 text-lg">detail</router-link>
       <router-link to="/black" class="mr-10 text-lg">black</router-link>
-      <router-link to="/videoUpload" class="text-lg">Video-Upload</router-link>
+      <router-link to="/videoUpload" class="mr-10 text-lg"
+        >Video-Upload</router-link
+      >
+      <router-link to="/Editor" class="text-lg">Editor</router-link>
     </div>
     <div class="flex justify-center">
       <router-view class="min-w-400 max-w-1190" />

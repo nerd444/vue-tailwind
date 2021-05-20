@@ -9,6 +9,7 @@ import Black from "../views/Black.vue";
 import Nav from "../views/Nav.vue";
 import Header from "../views/Header.vue";
 import VideoUpload from "../views/VideoUpload.vue";
+import Editor from "../views/Editor.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
     path: "/videoUpload",
     name: "VideoUpload",
     component: VideoUpload,
+  },
+  {
+    path: "/editor",
+    name: "Editor",
+    component: Editor,
   },
 ];
 
